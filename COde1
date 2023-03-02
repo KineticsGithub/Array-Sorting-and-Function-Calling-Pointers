@@ -1,0 +1,59 @@
+  #include <iostream>
+
+    using namespace std;
+
+    int averageScores(int *testScores, int numbers)
+    {
+        int total;
+        int average;
+        for(int i = 0; i < numbers; i++)
+        {
+           total += testScores[i];
+        }
+        average = total/numbers;
+
+        return average;
+    }
+
+    int main()
+    {
+            int NUM_INPUTS;
+
+
+            cout << "How many inputs do you have? ";
+            cin >> NUM_INPUTS;
+
+            int testScores[NUM_INPUTS];
+
+            for(int i = 0; i < NUM_INPUTS; i++)
+            {
+                cout << "Test score #" << i+1<< ": \n";
+                cin >> testScores[i];
+                cout << "\n";
+            }
+
+            for(int i = 0; i < NUM_INPUTS; i++)
+            {
+                for(int j = i; j < NUM_INPUTS; j++)
+                {
+                    if (testScores[j] < testScores[i])
+                    {
+                        int temp = testScores[j];
+                        testScores[j] = testScores[i];
+                        testScores[i] = temp;
+
+                    }
+
+                }
+            }
+            cout << "Your sorted array: ";
+            for(int i = 0; i < NUM_INPUTS; i++)
+            {
+                cout << testScores[i];
+            }
+            cout << "\n";
+            cout << "The average is: ";
+            cout << averageScores(testScores, NUM_INPUTS);
+
+            return 0;
+    }
